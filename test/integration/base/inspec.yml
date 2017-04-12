@@ -1,0 +1,10 @@
+name: rkhunter
+title: Rkhunter Profile
+maintainer: Nicolas Rodriguez
+copyright: Nicolas Rodriguez
+copyright_email: nicoladmin@free.fr
+license: MIT
+summary: Rkhunter Compliance Profile
+version: 0.1.0
+supports:
+  - os-name: debian

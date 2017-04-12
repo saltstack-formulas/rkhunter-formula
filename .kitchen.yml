@@ -1,0 +1,49 @@
+---
+driver:
+  name: docker
+  use_sudo: false
+
+provisioner:
+  name: salt_solo
+  formula: rkhunter
+
+  # Install Salt from official repositories
+  salt_install: apt
+  salt_version: latest
+  salt_apt_repo: http://repo.saltstack.com/apt/debian/8/amd64
+  salt_apt_repo_key: http://repo.saltstack.com/apt/debian/8/amd64/latest/SALTSTACK-GPG-KEY.pub
+
+  # Don't install Chef
+  require_chef: false
+
+  state_top:
+    base:
+      '*':
+        - rkhunter.config
+
+  pillars:
+    top.sls:
+      base:
+        '*':
+          - rkhunter
+    rkhunter.sls:
+      rkhunter:
+        config:
+          allow_ssh_root_user: 'yes'
+
+platforms:
+  - name: debian-jessie
+    driver_config:
+      image: 'debian:jessie'
+      platform: debian
+
+verifier:
+  name: inspec
+  format: progress
+
+suites:
+  - name: rkhunter
+    verifier:
+      inspec_tests:
+        - name: base
+          path: test/integration/base
