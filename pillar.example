@@ -1,0 +1,23 @@
+rkhunter:
+  config:
+    logfile: /var/log/rkhunter.log
+    tmpdir: /var/lib/rkhunter/tmp
+    dbdir: /var/lib/rkhunter/db
+    scriptdir: /usr/share/rkhunter/scripts
+    installdir: /usr
+    disable_unhide: 1
+    auto_x_detect: 1
+    enable_tests: all
+    disable_tests:
+      - suspscan
+      - hidden_procs
+      - deleted_files
+      - packet_cap_apps
+      - apps
+    scriptwhitelist:
+      - /bin/egrep
+      - /bin/fgrep
+      - /bin/which
+      - /usr/bin/groups
+      - /usr/bin/ldd
+      - /usr/sbin/adduser
