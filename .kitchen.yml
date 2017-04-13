@@ -1,3 +1,7 @@
+<%
+image_name     = ENV.fetch('DISTRIB', 'jessie/8').split('/').first
+debian_version = ENV.fetch('DISTRIB', 'jessie/8').split('/').last
+%>
 ---
 driver:
   name: docker
@@ -10,12 +14,11 @@ provisioner:
   # Install Salt from official repositories
   salt_install: apt
   salt_version: latest
-  salt_apt_repo: http://repo.saltstack.com/apt/debian/8/amd64
-  salt_apt_repo_key: http://repo.saltstack.com/apt/debian/8/amd64/latest/SALTSTACK-GPG-KEY.pub
 
   # Don't install Chef
   require_chef: false
 
+  # Configure Salt
   state_top:
     base:
       '*':
@@ -32,10 +35,17 @@ provisioner:
           allow_ssh_root_user: 'yes'
 
 platforms:
-  - name: debian-jessie
+  - name: debian-<%= image_name %>
     driver_config:
-      image: 'debian:jessie'
+      image: "debian:<%= image_name %>"
       platform: debian
+    provisioner:
+      <% if image_name == 'stretch' %>
+        salt_install: distrib
+      <% else %>
+        salt_apt_repo: 'http://repo.saltstack.com/apt/debian/<%= debian_version %>/amd64'
+        salt_apt_repo_key: http://repo.saltstack.com/apt/debian/<%= debian_version %>/amd64/latest/SALTSTACK-GPG-KEY.pub
+      <% end %>
 
 verifier:
   name: inspec

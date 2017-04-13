@@ -6,4 +6,9 @@ rvm:
 services:
   - docker
 script:
-- bundle exec kitchen test
+  - bundle exec kitchen test
+env:
+  matrix:
+    - DISTRIB=wheezy/7
+    - DISTRIB=jessie/8
+    - DISTRIB=stretch/9
