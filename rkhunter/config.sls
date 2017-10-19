@@ -10,3 +10,5 @@ rkhunter_config_file:
     - group:    root
     - template: jinja
     - source:   salt://rkhunter/files/rkhunter.conf
+    - require:
+      - pkg: rkhunter_package
