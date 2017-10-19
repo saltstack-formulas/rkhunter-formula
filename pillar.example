@@ -1,6 +1,8 @@
 rkhunter:
   config:
+    mail-on-warning: root
     logfile: /var/log/rkhunter.log
+    allow_ssh_root_user: without-password
     tmpdir: /var/lib/rkhunter/tmp
     dbdir: /var/lib/rkhunter/db
     scriptdir: /usr/share/rkhunter/scripts
