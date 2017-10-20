@@ -1,9 +1,21 @@
 {% set rkhunter = salt['grains.filter_by']({
   'Debian': {
     'package': 'rkhunter',
+    'default_file': '/etc/default/rkhunter',
     'config_file': '/etc/rkhunter.conf',
+    'default_file_config': {
+      'cron_daily_run': 'true',
+      'cron_db_update': 'true',
+      'db_update_email': 'false',
+      'report_email': 'root',
+      'apt_autogen': 'true',
+      'run_check_on_battery': 'false',
+    },
     'default_config': {
+      'mail-on-warning': 'root',
       'logfile': '/var/log/rkhunter.log',
+      'allow_ssh_root_user': 'without-password',
+      'allow_ssh_prot_v1': '2',
       'tmpdir': '/var/lib/rkhunter/tmp',
       'dbdir': '/var/lib/rkhunter/db',
       'scriptdir': '/usr/share/rkhunter/scripts',
