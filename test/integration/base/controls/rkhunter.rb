@@ -27,3 +27,15 @@ describe file('/etc/rkhunter.conf') do
   # Custom config from pillar
   its('content') { should include 'ALLOW_SSH_ROOT_USER=yes' }
 end
+
+describe file('/etc/default/rkhunter') do
+  # Default config
+  its('content') { should include 'APT_AUTOGEN="true"' }
+  its('content') { should include 'REPORT_EMAIL=root' }
+  its('content') { should include 'DB_UPDATE_EMAIL="false"' }
+  its('content') { should include 'CRON_DB_UPDATE="true"' }
+  its('content') { should include 'CRON_DAILY_RUN="true"' }
+
+  # Custom config from pillar
+  its('content') { should include 'RUN_CHECK_ON_BATTERY="true"' }
+end
