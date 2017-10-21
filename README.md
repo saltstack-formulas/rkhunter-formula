@@ -6,5 +6,6 @@ Install and configure [rkhunter](http://rkhunter.sourceforge.net/) directly with
 
 ### Available states
 
-* `rkhunter.install` : Installs rkhunter package
-* `rkhunter.config` : Configures rkhunter package
+* `rkhunter.install` : Installs `rkhunter` package
+* `rkhunter.config` : Configures `rkhunter` package
+* `rkhunter` : Installs and configures `rkhunter` package
