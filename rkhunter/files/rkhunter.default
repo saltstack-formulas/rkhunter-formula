@@ -1,17 +1,11 @@
+# This file managed by Salt, do not edit by hand!!
+
+# Defaults for rkhunter automatic tasks
+# sourced by /etc/cron.*/rkhunter and /etc/apt/apt.conf.d/90rkhunter
+#
+# This is a POSIX shell fragment
+#
+
+{%- from "rkhunter/macro.jinja" import print_config -%}
 {%- from "rkhunter/map.jinja" import rkhunter with context -%}
-{%- set default_file_config = rkhunter.default_file_config -%}
-{%- set defaults = salt['pillar.get']('rkhunter:defaults', {}) -%}
-{%- set _dummy = default_file_config.update(defaults) -%}
-{%- for key, value in default_file_config.iteritems() -%}
-  {%- if value is number or value is string %}
-{{ key | upper }}={{ value }}
-  {%- elif value is iterable %}
-    {%- if key == 'disable_tests' %}
-{{ key | upper }}='{{ value | join(' ') }}'
-    {%- else %}
-      {%- for subkey in value %}
-{{ key | upper }}={{ subkey }}
-      {%- endfor %}
-    {%- endif %}
-  {%- endif %}
-{%- endfor %}
+{{ print_config(rkhunter.default) }}

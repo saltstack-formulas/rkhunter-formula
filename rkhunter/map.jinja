@@ -1,43 +1,21 @@
-{% set rkhunter = salt['grains.filter_by']({
-  'Debian': {
-    'package': 'rkhunter',
-    'default_file': '/etc/default/rkhunter',
-    'config_file': '/etc/rkhunter.conf',
-    'default_file_config': {
-      'cron_daily_run': 'true',
-      'cron_db_update': 'true',
-      'db_update_email': 'false',
-      'report_email': 'root',
-      'apt_autogen': 'true',
-      'run_check_on_battery': 'false',
-    },
-    'default_config': {
-      'mail-on-warning': 'root',
-      'logfile': '/var/log/rkhunter.log',
-      'allow_ssh_root_user': 'without-password',
-      'allow_ssh_prot_v1': '2',
-      'tmpdir': '/var/lib/rkhunter/tmp',
-      'dbdir': '/var/lib/rkhunter/db',
-      'scriptdir': '/usr/share/rkhunter/scripts',
-      'installdir': '/usr',
-      'disable_unhide': 1,
-      'auto_x_detect': 1,
-      'enable_tests': 'all',
-      'disable_tests': [
-        'suspscan',
-        'hidden_procs',
-        'deleted_files',
-        'packet_cap_apps',
-        'apps'
-      ],
-      'scriptwhitelist': [
-        '/bin/egrep',
-        '/bin/fgrep',
-        '/bin/which',
-        '/usr/bin/groups',
-        '/usr/bin/ldd',
-        '/usr/sbin/adduser'
-      ]
-    }
-  },
-}, default='Debian', merge=salt['pillar.get']('rkhunter:lookup')) %}
+# -*- coding: utf-8 -*-
+# vim: ft=jinja
+
+{% import_yaml "rkhunter/defaults.yml" as defaults %}
+{% import_yaml "rkhunter/os_family_map.yml" as os_family_map %}
+{% import_yaml "rkhunter/os_codename_map.yml" as os_codename_map %}
+
+{# get the settings for the os_family grain #}
+{% set osfam = salt['grains.filter_by'](os_family_map) or {} %}
+
+{# get the settings for the oscodename grain, os_family data will override oscodename data #}
+{% set oscode = salt['grains.filter_by'](os_codename_map, grain='oscodename', merge=osfam) or {} %}
+
+{# merge the os family/os codename specific data over the defaults #}
+{% do defaults.rkhunter.update(oscode) %}
+
+{# merge the pillar:lookup dict into the defaults/os specific dict #}
+{% set lookup = salt['pillar.get']('rkhunter:lookup', default=defaults.rkhunter, merge=True) %}
+
+{# merge the actual rkhunter pillar into the above combined dict #}
+{% set rkhunter = salt['pillar.get']('rkhunter', default=lookup, merge=True) %}

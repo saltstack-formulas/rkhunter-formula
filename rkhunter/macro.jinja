@@ -1,0 +1,22 @@
+# -*- coding: utf-8 -*-
+# vim: ft=jinja
+
+{%- macro print_config(config) -%}
+  {%- for key, value in config.iteritems() -%}
+    {%- if value is string %}
+{{ key | upper }}={{ value }}
+    {%- elif (value | string == 'True') or (value | string == 'False') %}
+{{ key | upper }}="{{ value | lower }}"
+    {%- elif value is number %}
+{{ key | upper }}={{ value }}
+    {%- elif value is iterable %}
+      {%- if key == 'disable_tests' %}
+{{ key | upper }}='{{ value | join(' ') }}'
+      {%- else %}
+        {%- for subkey in value %}
+{{ key | upper }}={{ subkey }}
+        {%- endfor %}
+      {%- endif %}
+    {%- endif %}
+  {%- endfor %}
+{%- endmacro -%}

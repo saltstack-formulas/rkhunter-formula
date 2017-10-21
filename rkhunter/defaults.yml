@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+
 rkhunter:
   default:
     cron_daily_run: true
@@ -6,6 +9,7 @@ rkhunter:
     report_email: root
     apt_autogen: true
     run_check_on_battery: false
+
   config:
     mail-on-warning: root
     logfile: /var/log/rkhunter.log
@@ -24,6 +28,7 @@ rkhunter:
       - deleted_files
       - packet_cap_apps
       - apps
+
     scriptwhitelist:
       - /bin/egrep
       - /bin/fgrep
