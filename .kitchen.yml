@@ -1,6 +1,6 @@
 <%
-image_name     = ENV.fetch('DISTRIB', 'jessie/8').split('/').first
-debian_version = ENV.fetch('DISTRIB', 'jessie/8').split('/').last
+distrib, infos    = ENV.fetch('DISTRIB', 'debian:jessie/8').split(':')
+codename, version = infos.split('/')
 %>
 ---
 driver:
@@ -14,8 +14,8 @@ provisioner:
   # Install Salt from official repositories
   salt_install: apt
   salt_version: latest
-  salt_apt_repo: 'http://repo.saltstack.com/apt/debian/<%= debian_version %>/amd64'
-  salt_apt_repo_key: http://repo.saltstack.com/apt/debian/<%= debian_version %>/amd64/latest/SALTSTACK-GPG-KEY.pub
+  salt_apt_repo: http://repo.saltstack.com/apt/<%= distrib %>/<%= version %>/amd64
+  salt_apt_repo_key: http://repo.saltstack.com/apt/<%= distrib %>/<%= version %>/amd64/latest/SALTSTACK-GPG-KEY.pub
 
   # Don't install Chef
   require_chef: false
@@ -35,12 +35,14 @@ provisioner:
       rkhunter:
         config:
           allow_ssh_root_user: 'yes'
+        default:
+          run_check_on_battery: true
 
 platforms:
-  - name: debian-<%= image_name %>
+  - name: <%= distrib %>-<%= codename %>
     driver_config:
-      image: "debian:<%= image_name %>"
-      platform: debian
+      image: "<%= distrib %>:<%= codename %>"
+      platform: <%= distrib %>
 
 verifier:
   name: inspec
