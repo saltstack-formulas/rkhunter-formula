@@ -1,5 +1,5 @@
 <%
-distrib, infos    = ENV.fetch('DISTRIB', 'debian:jessie/8').split(':')
+distrib, infos    = ENV.fetch('DISTRIB', 'debian:stretch/9').split(':')
 codename, version = infos.split('/')
 %>
 ---
