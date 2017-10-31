@@ -50,7 +50,3 @@ verifier:
 
 suites:
   - name: rkhunter
-    verifier:
-      inspec_tests:
-        - name: base
-          path: test/integration/base
