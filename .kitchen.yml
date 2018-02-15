@@ -46,7 +46,7 @@ platforms:
 
 verifier:
   name: inspec
-  format: progress
+  reporter: progress
 
 suites:
   - name: rkhunter
