@@ -16,3 +16,12 @@ You can take a loot at [`pillar.example`](https://github.com/saltstack-formulas/
 
 * `rkhunter:default:*` is to configure `/etc/default/rkhunter` file (on Debian/Ubuntu)
 * `rkhunter:config:*` is to configure `/etc/rkhunter.conf` file
+
+## Run tests
+
+This formula is tested with [Kitchen](https://kitchen.ci/) and [Inspec](https://www.inspec.io/) in a Docker container.
+
+To run tests you need to
+
+* install Ruby dependencies : `bundle install`
+* run Kitchen : `kitchen test`
