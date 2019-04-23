@@ -5,3 +5,8 @@ Debian:
   package: rkhunter
   default_file: /etc/default/rkhunter
   config_file: /etc/rkhunter.conf
+
+RedHat:
+  package: rkhunter
+  default_file: /etc/sysconfig/rkhunter
+  config_file: /etc/rkhunter.conf
