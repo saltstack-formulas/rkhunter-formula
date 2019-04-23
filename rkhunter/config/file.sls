@@ -5,6 +5,7 @@
 {%- set tplroot = tpldir.split('/')[0] %}
 {%- set sls_package_install = tplroot ~ '.package.install' %}
 {%- from tplroot ~ "/map.jinja" import rkhunter with context %}
+{%- from tplroot ~ "/libtofs.jinja" import files_switch with context %}
 
 include:
   - {{ sls_package_install }}
@@ -15,7 +16,10 @@ rkhunter-default-file-file-managed:
     - user:     root
     - group:    root
     - template: jinja
-    - source:   salt://rkhunter/files/rkhunter.default
+    - source: {{ files_switch(['rkhunter.default.tmpl', 'rkhunter.default.tmpl.jinja'],
+                              lookup='rkhunter-default-file-file-managed'
+                 )
+              }}
     - require:
       - sls: {{ sls_package_install }}
 
@@ -25,6 +29,9 @@ rkhunter-config-file-file-managed:
     - user:     root
     - group:    root
     - template: jinja
-    - source:   salt://rkhunter/files/rkhunter.conf
+    - source: {{ files_switch(['rkhunter.conf.tmpl', 'rkhunter.conf.tmpl.jinja'],
+                              lookup='rkhunter-config-file-file-managed'
+                 )
+              }}
     - require:
       - sls: {{ sls_package_install }}
