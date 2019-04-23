@@ -4,7 +4,6 @@
 {#- Get the `tplroot` from `tpldir` #}
 {%- set tplroot = tpldir.split('/')[0] %}
 {%- from tplroot ~ "/map.jinja" import rkhunter with context %}
-{% from "rkhunter/map.jinja" import rkhunter %}
 
 rkhunter-package-install-pkg-installed:
   pkg.installed:
