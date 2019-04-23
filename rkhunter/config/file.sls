@@ -22,6 +22,8 @@ rkhunter-default-file-file-managed:
               }}
     - require:
       - sls: {{ sls_package_install }}
+    - context:
+        default: {{ rkhunter.default | json }}
 
 rkhunter-config-file-file-managed:
   file.managed:
@@ -35,3 +37,5 @@ rkhunter-config-file-file-managed:
               }}
     - require:
       - sls: {{ sls_package_install }}
+    - context:
+        config: {{ rkhunter.config | json }}
