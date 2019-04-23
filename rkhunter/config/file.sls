@@ -17,7 +17,7 @@ rkhunter-default-file-file-managed:
     - template: jinja
     - source:   salt://rkhunter/files/rkhunter.default
     - require:
-      - pkg: rkhunter_package
+      - sls: {{ sls_package_install }}
 
 rkhunter-config-file-file-managed:
   file.managed:
@@ -27,4 +27,4 @@ rkhunter-config-file-file-managed:
     - template: jinja
     - source:   salt://rkhunter/files/rkhunter.conf
     - require:
-      - pkg: rkhunter_package
+      - sls: {{ sls_package_install }}
