@@ -2,7 +2,7 @@
 # vim: ft=jinja
 
 {%- macro print_config(config) -%}
-  {%- for key, value in config.iteritems() -%}
+  {%- for key, value in config.items() -%}
     {%- if value is string %}
 {{ key | upper }}={{ value }}
     {%- elif (value | string == 'True') or (value | string == 'False') %}

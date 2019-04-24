@@ -1,0 +1,17 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
+Debian:
+  package: rkhunter
+  default_file: /etc/default/rkhunter
+  config_file: /etc/rkhunter.conf
+
+RedHat:
+  package: rkhunter
+  default_file: /etc/sysconfig/rkhunter
+  config_file: /etc/rkhunter.conf
+
+Suse:
+  package: rkhunter
+  default_file: /etc/sysconfig/rkhunter
+  config_file: /etc/rkhunter.conf

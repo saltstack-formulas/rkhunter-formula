@@ -1,21 +1,24 @@
 # -*- coding: utf-8 -*-
 # vim: ft=jinja
 
-{% import_yaml "rkhunter/defaults.yml" as defaults %}
-{% import_yaml "rkhunter/os_family_map.yml" as os_family_map %}
-{% import_yaml "rkhunter/os_codename_map.yml" as os_codename_map %}
+{#- Get the `tplroot` from `tpldir` #}
+{%- set tplroot = tpldir.split('/')[0] %}
+{#- Start imports as #}
+{%- import_yaml tplroot ~ "/defaults.yaml" or {} as default_settings %}
+{%- import_yaml tplroot ~ "/osfamilymap.yaml" or {} as osfamilymap %}
+{%- import_yaml tplroot ~ "/osmap.yaml" or {} as osmap %}
+{%- import_yaml tplroot ~ "/osfingermap.yaml" or {} as osfingermap %}
 
-{# get the settings for the os_family grain #}
-{% set osfam = salt['grains.filter_by'](os_family_map) or {} %}
+{%- set defaults = salt['grains.filter_by'](default_settings,
+  default='rkhunter',
+  merge=salt['grains.filter_by'](osfamilymap, grain='os_family',
+    merge=salt['grains.filter_by'](osmap, grain='os',
+      merge=salt['grains.filter_by'](osfingermap, grain='osfinger',
+        merge=salt['pillar.get']('rkhunter:lookup', default={})
+      )
+    )
+  )
+) %}
 
-{# get the settings for the oscodename grain, os_family data will override oscodename data #}
-{% set oscode = salt['grains.filter_by'](os_codename_map, grain='oscodename', merge=osfam) or {} %}
-
-{# merge the os family/os codename specific data over the defaults #}
-{% do defaults.rkhunter.update(oscode) %}
-
-{# merge the pillar:lookup dict into the defaults/os specific dict #}
-{% set lookup = salt['pillar.get']('rkhunter:lookup', default=defaults.rkhunter, merge=True) %}
-
-{# merge the actual rkhunter pillar into the above combined dict #}
-{% set rkhunter = salt['pillar.get']('rkhunter', default=lookup, merge=True) %}
+{#- Merge the rkhunter pillar #}
+{%- set rkhunter = salt['pillar.get']('rkhunter', default=defaults, merge=True) %}
