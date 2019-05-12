@@ -60,11 +60,10 @@ platforms:
   - name: ubuntu-1604-2017-7-py2
     driver:
       image: netmanagers/salt-2017.7-py2:ubuntu-16.04
-  # TODO: Modify the formula to work for non-`systemd` platforms
   - name: centos-6-2017-7-py2
     driver:
       image: netmanagers/salt-2017.7-py2:centos-6
-      run_options: '--entrypoint /sbin/init'
+      run_command: /sbin/init
   - name: fedora-28-2017-7-py2
     driver:
       image: netmanagers/salt-2017.7-py2:fedora-28
