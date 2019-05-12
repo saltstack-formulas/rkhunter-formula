@@ -6,30 +6,29 @@ Debian:
   default_file: /etc/default/rkhunter
   config_file: /etc/rkhunter.conf
   default:
+    apt_autogen: true
     cron_daily_run: true
     cron_db_update: true
     db_update_email: false
     report_email: root
-    apt_autogen: true
     run_check_on_battery: false
   config:
-    mail-on-warning: root
-    logfile: /var/log/rkhunter.log
-    allow_ssh_root_user: without-password
     allow_ssh_prot_v1: 2
-    tmpdir: /var/lib/rkhunter/tmp
-    dbdir: /var/lib/rkhunter/db
-    scriptdir: /usr/share/rkhunter/scripts
-    installdir: /usr
-    disable_unhide: 1
+    allow_ssh_root_user: without-password
     auto_x_detect: 1
-    enable_tests: all
+    dbdir: /var/lib/rkhunter/db
     disable_tests:
-      - suspscan
-      - hidden_procs
-      - deleted_files
-      - packet_cap_apps
       - apps
+      - deleted_files
+      - hidden_procs
+      - packet_cap_apps
+      - suspscan
+    disable_unhide: 1
+    enable_tests: all
+    installdir: /usr
+    logfile: /var/log/rkhunter.log
+    mail-on-warning: root
+    scriptdir: /usr/share/rkhunter/scripts
     scriptwhitelist:
       - /bin/egrep
       - /bin/fgrep
@@ -37,86 +36,23 @@ Debian:
       - /usr/bin/groups
       - /usr/bin/ldd
       - /usr/sbin/adduser
+    tmpdir: /var/lib/rkhunter/tmp
 
 RedHat:
   package: rkhunter
   default_file: /etc/sysconfig/rkhunter
   config_file: /etc/rkhunter.conf
   default:
-    mailto: root@localhost
     diag_scan: 'no'
+    mailto: root@localhost
   config:
-    tmpdir: /var/lib/rkhunter
-    dbdir: /var/lib/rkhunter/db
-    scriptdir: /usr/share/rkhunter/scripts
-    logfile: /var/log/rkhunter/rkhunter.log
-    append_log: 1
-    auto_x_detect: 1
-    allow_ssh_root_user: unset
-    allow_ssh_prot_v1: 2
-    enable_tests: ALL
-    disable_tests:
-      - suspscan
-      - hidden_procs
-      - deleted_files
-      - packet_cap_apps
-      - apps
-      - ipc_shared_mem
-    pkgmgr: RPM
-    existwhitelist:
-      - /bin/ad
-      - /var/log/pki-ca/system
-      - /var/log/pki/pki-tomcat/ca/system
-      - /usr/bin/GET
-      - /usr/bin/whatis
-      - /var/log/pki/pki-tomcat/kra/system
-    scriptwhitelist:
-      - /usr/bin/whatis
-      - /usr/bin/ldd
-      - /usr/bin/groups
-      - /usr/bin/GET
-      - /sbin/ifup
-      - /sbin/ifdown
-    allowhiddendir:
-      - /etc/.java
-      - /dev/.udev
-      - /dev/.udevdb
-      - /dev/.udev.tdb
-      - /dev/.static
-      - /dev/.initramfs
-      - /dev/.SRC-unix
-      - /dev/.mdadm
-      - /dev/.systemd
-      - /dev/.mount
-      - /etc/.git
-      - /etc/.bzr
-    allowhiddenfile:
-      - /usr/sbin/.sshd.hmac
-      - "/usr/share/man/man1/..1.gz"
-      - /lib*/.libcrypto.so.*.hmac
-      - /lib*/.libssl.so.*.hmac
-      - /usr/bin/.fipscheck.hmac
-      - /usr/bin/.ssh.hmac
-      - /usr/bin/.ssh-keygen.hmac
-      - /usr/bin/.ssh-keyscan.hmac
-      - /usr/bin/.ssh-add.hmac
-      - /usr/bin/.ssh-agent.hmac
-      - /usr/lib*/.libfipscheck.so.*.hmac
-      - /usr/lib*/.libgcrypt.so.*.hmac
-      - /usr/lib*/hmaccalc/sha1hmac.hmac
-      - /usr/lib*/hmaccalc/sha256hmac.hmac
-      - /usr/lib*/hmaccalc/sha384hmac.hmac
-      - /usr/lib*/hmaccalc/sha512hmac.hmac
-      - /usr/sbin/.sshd.hmac
-      - /dev/.mdadm.map
-      - /usr/share/man/man5/.k5login.5.gz
-      - /usr/share/man/man5/.k5identity.5.gz
-      - /usr/sbin/.ipsec.hmac
-      - /etc/.etckeeper
-      - /etc/.gitignore
-      - /etc/.bzrignore
-      - /etc/.updated
     allowdevfile:
+      - "/dev/md/autorebuild.pid"
+      - "/dev/shm/libv4l-*"
+      - "/dev/shm/mono.*"
+      - "/dev/shm/spice.*"
+      - /dev/md/md-device-map
+      - /dev/shm/pulse-shm-*
       - /dev/shm/qb-attrd-*
       - /dev/shm/qb-cfg-*
       - /dev/shm/qb-cib_rw-*
@@ -127,55 +63,119 @@ RedHat:
       - /dev/shm/qb-pengine-*
       - /dev/shm/qb-quorum-*
       - /dev/shm/qb-stonith-*
-      - /dev/shm/pulse-shm-*
-      - /dev/md/md-device-map
-      - "/dev/shm/mono.*"
-      - "/dev/shm/libv4l-*"
-      - "/dev/shm/spice.*"
-      - "/dev/md/autorebuild.pid"
       - /dev/shm/sem.slapd-*.stats
       - /dev/shm/squid-cf*
       - /dev/shm/squid-ssl_session_cache.shm
+    allowhiddendir:
+      - /dev/.SRC-unix
+      - /dev/.initramfs
+      - /dev/.mdadm
+      - /dev/.mount
+      - /dev/.static
+      - /dev/.systemd
+      - /dev/.udev
+      - /dev/.udev.tdb
+      - /dev/.udevdb
+      - /etc/.bzr
+      - /etc/.git
+      - /etc/.java
+    allowhiddenfile:
+      - "/usr/share/man/man1/..1.gz"
+      - /dev/.mdadm.map
+      - /etc/.bzrignore
+      - /etc/.etckeeper
+      - /etc/.gitignore
+      - /etc/.updated
+      - /lib*/.libcrypto.so.*.hmac
+      - /lib*/.libssl.so.*.hmac
+      - /usr/bin/.fipscheck.hmac
+      - /usr/bin/.ssh-add.hmac
+      - /usr/bin/.ssh-agent.hmac
+      - /usr/bin/.ssh-keygen.hmac
+      - /usr/bin/.ssh-keyscan.hmac
+      - /usr/bin/.ssh.hmac
+      - /usr/lib*/.libfipscheck.so.*.hmac
+      - /usr/lib*/.libgcrypt.so.*.hmac
+      - /usr/lib*/hmaccalc/sha1hmac.hmac
+      - /usr/lib*/hmaccalc/sha256hmac.hmac
+      - /usr/lib*/hmaccalc/sha384hmac.hmac
+      - /usr/lib*/hmaccalc/sha512hmac.hmac
+      - /usr/sbin/.ipsec.hmac
+      - /usr/sbin/.sshd.hmac
+      - /usr/sbin/.sshd.hmac
+      - /usr/share/man/man5/.k5identity.5.gz
+      - /usr/share/man/man5/.k5login.5.gz
+    allow_ssh_prot_v1: 2
+    allow_ssh_root_user: unset
+    append_log: 1
+    auto_x_detect: 1
+    dbdir: /var/lib/rkhunter/db
+    disable_tests:
+      - apps
+      - deleted_files
+      - hidden_procs
+      - ipc_shared_mem
+      - packet_cap_apps
+      - suspscan
+    enable_tests: ALL
+    existwhitelist:
+      - /bin/ad
+      - /usr/bin/GET
+      - /usr/bin/whatis
+      - /var/log/pki-ca/system
+      - /var/log/pki/pki-tomcat/ca/system
+      - /var/log/pki/pki-tomcat/kra/system
+    installdir: /usr
+    logfile: /var/log/rkhunter/rkhunter.log
+    pkgmgr: RPM
     rtkt_file_whitelist:
       - /bin/ad
       - /var/log/pki-ca/system
       - /var/log/pki/pki-tomcat/ca/system
       - /var/log/pki/pki-tomcat/kra/system
-    installdir: /usr
+    scriptdir: /usr/share/rkhunter/scripts
+    scriptwhitelist:
+      - /sbin/ifdown
+      - /sbin/ifup
+      - /usr/bin/GET
+      - /usr/bin/groups
+      - /usr/bin/ldd
+      - /usr/bin/whatis
+    tmpdir: /var/lib/rkhunter
 
 Suse:
   package: rkhunter
   default_file: /etc/sysconfig/rkhunter
   config_file: /etc/rkhunter.conf
   default:
-    start_rkhunter: 'yes'
-    run_suseconfig: 'yes'
     cron_db_update: 'no'
-    pro_update: 'no'
+    logfile: /var/log/rkhunter.log
     nice: 0
-    logfile: /var/log/rkhunter.log
-    report_email: root
     options: '"--no-mail-on-warning --cronjob --report-warnings-only --append-log --pkgmgr RPM"'
+    pro_update: 'no'
+    report_email: root
+    run_suseconfig: 'yes'
+    start_rkhunter: 'yes'
   config:
-    tmpdir: /var/lib/rkhunter/tmp
-    dbdir: /var/lib/rkhunter/db
-    scriptdir: /usr/lib/rkhunter/scripts
-    logfile: /var/log/rkhunter.log
+    allowdevfile: /dev/shm/sysconfig/new-stamp-*
+    allowhiddendir:
+      - /dev/.udev
+      - /dev/.udev
+      - /etc/.java
     auto_x_detect: 1
-    enable_tests: ALL
+    dbdir: /var/lib/rkhunter/db
     disable_tests:
-      - suspscan
+      - apps
+      - deleted_files
       - hidden_ports
       - hidden_procs
-      - deleted_files
       - packet_cap_apps
-      - apps
-    pkgmgr: RPM
-    allowhiddendir:
-      - /etc/.java
-      - /dev/.udev
-      - /dev/.udev
-    allowdevfile: /dev/shm/sysconfig/new-stamp-*
-    os_version_file: /etc/os-release
+      - suspscan
+    enable_tests: ALL
     installdir: /usr
+    logfile: /var/log/rkhunter.log
+    os_version_file: /etc/os-release
+    pkgmgr: RPM
+    scriptdir: /usr/lib/rkhunter/scripts
+    tmpdir: /var/lib/rkhunter/tmp
     user_fileprop_files_dirs: /etc/rkhunter.conf
