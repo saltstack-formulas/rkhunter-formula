@@ -82,12 +82,12 @@ control 'Rkhunter configuration' do
   end
 
   # Override by OS
-  case os[:name]
-  when 'debian', 'ubuntu'
+  case os[:family]
+  when 'debian'
     check_debian
-  when 'redhat', 'fedora', 'centos'
+  when 'redhat', 'fedora'
     check_redhat
-  when 'suse', 'opensuse'
+  when 'suse'
     check_suse
   end
 end
