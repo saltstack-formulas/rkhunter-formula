@@ -30,7 +30,7 @@ control 'Rkhunter configuration' do
       its('content') { should include 'ENABLE_TESTS=all' }
       its('content') { should include 'TMPDIR=/var/lib/rkhunter/tmp' }
       its('content') { should include 'SCRIPTDIR=/usr/share/rkhunter/scripts' }
-      its('content') { should include "DISABLE_TESTS='suspscan hidden_procs deleted_files packet_cap_apps apps'" }
+      its('content') { should include "DISABLE_TESTS='apps deleted_files hidden_procs packet_cap_apps suspscan'" }
 
       # Custom config from pillar
       its('content') { should include 'ALLOW_SSH_ROOT_USER=yes' }
@@ -52,7 +52,7 @@ control 'Rkhunter configuration' do
       its('content') { should include 'ENABLE_TESTS=ALL' }
       its('content') { should include 'TMPDIR=/var/lib/rkhunter' }
       its('content') { should include 'SCRIPTDIR=/usr/share/rkhunter/scripts' }
-      its('content') { should include "DISABLE_TESTS='suspscan hidden_procs deleted_files packet_cap_apps apps ipc_shared_mem'" }
+      its('content') { should include "DISABLE_TESTS='apps deleted_files hidden_procs ipc_shared_mem packet_cap_apps suspscan'" }
     end
   end
 
@@ -77,7 +77,7 @@ control 'Rkhunter configuration' do
       its('content') { should include 'ENABLE_TESTS=ALL' }
       its('content') { should include 'TMPDIR=/var/lib/rkhunter' }
       its('content') { should include 'SCRIPTDIR=/usr/lib/rkhunter/scripts' }
-      its('content') { should include "DISABLE_TESTS='suspscan hidden_ports hidden_procs deleted_files packet_cap_apps apps'" }
+      its('content') { should include "DISABLE_TESTS='apps deleted_files hidden_ports hidden_procs packet_cap_apps suspscan'" }
     end
   end
 

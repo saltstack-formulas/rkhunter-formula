@@ -2,9 +2,7 @@
 # vim: ft=yaml
 ---
 Debian:
-  package: rkhunter
   default_file: /etc/default/rkhunter
-  config_file: /etc/rkhunter.conf
   default:
     apt_autogen: true
     cron_daily_run: true
@@ -15,8 +13,6 @@ Debian:
   config:
     allow_ssh_prot_v1: 2
     allow_ssh_root_user: without-password
-    auto_x_detect: 1
-    dbdir: /var/lib/rkhunter/db
     disable_tests:
       - apps
       - deleted_files
@@ -25,10 +21,7 @@ Debian:
       - suspscan
     disable_unhide: 1
     enable_tests: all
-    installdir: /usr
-    logfile: /var/log/rkhunter.log
     mail-on-warning: root
-    scriptdir: /usr/share/rkhunter/scripts
     scriptwhitelist:
       - /bin/egrep
       - /bin/fgrep
@@ -36,12 +29,8 @@ Debian:
       - /usr/bin/groups
       - /usr/bin/ldd
       - /usr/sbin/adduser
-    tmpdir: /var/lib/rkhunter/tmp
 
 RedHat:
-  package: rkhunter
-  default_file: /etc/sysconfig/rkhunter
-  config_file: /etc/rkhunter.conf
   default:
     diag_scan: 'no'
     mailto: root@localhost
@@ -108,8 +97,6 @@ RedHat:
     allow_ssh_prot_v1: 2
     allow_ssh_root_user: unset
     append_log: 1
-    auto_x_detect: 1
-    dbdir: /var/lib/rkhunter/db
     disable_tests:
       - apps
       - deleted_files
@@ -117,7 +104,6 @@ RedHat:
       - ipc_shared_mem
       - packet_cap_apps
       - suspscan
-    enable_tests: ALL
     existwhitelist:
       - /bin/ad
       - /usr/bin/GET
@@ -125,7 +111,6 @@ RedHat:
       - /var/log/pki-ca/system
       - /var/log/pki/pki-tomcat/ca/system
       - /var/log/pki/pki-tomcat/kra/system
-    installdir: /usr
     logfile: /var/log/rkhunter/rkhunter.log
     pkgmgr: RPM
     rtkt_file_whitelist:
@@ -133,7 +118,6 @@ RedHat:
       - /var/log/pki-ca/system
       - /var/log/pki/pki-tomcat/ca/system
       - /var/log/pki/pki-tomcat/kra/system
-    scriptdir: /usr/share/rkhunter/scripts
     scriptwhitelist:
       - /sbin/ifdown
       - /sbin/ifup
@@ -144,9 +128,6 @@ RedHat:
     tmpdir: /var/lib/rkhunter
 
 Suse:
-  package: rkhunter
-  default_file: /etc/sysconfig/rkhunter
-  config_file: /etc/rkhunter.conf
   default:
     cron_db_update: 'no'
     logfile: /var/log/rkhunter.log
@@ -162,8 +143,6 @@ Suse:
       - /dev/.udev
       - /dev/.udev
       - /etc/.java
-    auto_x_detect: 1
-    dbdir: /var/lib/rkhunter/db
     disable_tests:
       - apps
       - deleted_files
@@ -171,11 +150,7 @@ Suse:
       - hidden_procs
       - packet_cap_apps
       - suspscan
-    enable_tests: ALL
-    installdir: /usr
-    logfile: /var/log/rkhunter.log
     os_version_file: /etc/os-release
     pkgmgr: RPM
     scriptdir: /usr/lib/rkhunter/scripts
-    tmpdir: /var/lib/rkhunter/tmp
     user_fileprop_files_dirs: /etc/rkhunter.conf
