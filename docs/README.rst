@@ -40,21 +40,21 @@ Contributing to this repo
 Please see :ref:`How to contribute <CONTRIBUTING>` for more details.
 
 Available states
-================
+----------------
 
 .. contents::
     :local:
 
 ``rkhunter``
-------------
+^^^^^^^^^^^^
 Installs and configures the rkhunter package.
 
 ``rkhunter.package``
---------------------
+^^^^^^^^^^^^^^^^^^^^
 Installs the rkhunter package.
 
 ``rkhunter.config``
--------------------
+^^^^^^^^^^^^^^^^^^^
 This state manages the file ``rkhunter.conf`` under ``/etc`` (template found in "rkhunter/files"). The configuration is populated by values in "rkhunter/map.jinja" based on the package's default values (and RedHat, Debian, Suse and Arch family distribution specific values), which can then be overridden by values of the same name in pillar.
 
 Testing
