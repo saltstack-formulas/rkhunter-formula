@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.1.4](https://github.com/saltstack-formulas/rkhunter-formula/compare/v0.1.3...v0.1.4) (2019-05-13)
+
+
+### Bug Fixes
+
+* **formula:** add only supported distros to FORMULA file ([9fbc9ec](https://github.com/saltstack-formulas/rkhunter-formula/commit/9fbc9ec))
+* **gitignore:** update .gitignore from template-formula ([90b261c](https://github.com/saltstack-formulas/rkhunter-formula/commit/90b261c))
+
+
+### Documentation
+
+* **readme:** fix testing section indentation ([bf7de8d](https://github.com/saltstack-formulas/rkhunter-formula/commit/bf7de8d))
+* **readme:** update readme with testing info ([773d23e](https://github.com/saltstack-formulas/rkhunter-formula/commit/773d23e))
+
 ## [0.1.3](https://github.com/saltstack-formulas/rkhunter-formula/compare/v0.1.2...v0.1.3) (2019-05-13)
 
 
