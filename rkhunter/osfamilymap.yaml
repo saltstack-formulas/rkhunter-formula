@@ -36,10 +36,10 @@ RedHat:
     mailto: root@localhost
   config:
     allowdevfile:
-      - "/dev/md/autorebuild.pid"
-      - "/dev/shm/libv4l-*"
-      - "/dev/shm/mono.*"
-      - "/dev/shm/spice.*"
+      - /dev/md/autorebuild.pid
+      - /dev/shm/libv4l-*
+      - /dev/shm/mono.*
+      - /dev/shm/spice.*
       - /dev/md/md-device-map
       - /dev/shm/pulse-shm-*
       - /dev/shm/qb-attrd-*
@@ -69,7 +69,7 @@ RedHat:
       - /etc/.git
       - /etc/.java
     allowhiddenfile:
-      - "/usr/share/man/man1/..1.gz"
+      - /usr/share/man/man1/..1.gz
       - /dev/.mdadm.map
       - /etc/.bzrignore
       - /etc/.etckeeper
