@@ -1,4 +1,15 @@
 # -*- coding: utf-8 -*-
 # vim: ft=yaml
 ---
-rkhunter: {}
+rkhunter:
+  package: rkhunter
+  default_file: /etc/sysconfig/rkhunter
+  config_file: /etc/rkhunter.conf
+  config:
+    auto_x_detect: 1
+    dbdir: /var/lib/rkhunter/db
+    enable_tests: ALL
+    installdir: /usr
+    logfile: /var/log/rkhunter.log
+    scriptdir: /usr/share/rkhunter/scripts
+    tmpdir: /var/lib/rkhunter/tmp
