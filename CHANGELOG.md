@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.1.3](https://github.com/saltstack-formulas/rkhunter-formula/compare/v0.1.2...v0.1.3) (2019-05-13)
+
+
+### Code Refactoring
+
+* **inspec:** use `os:family` simplification for `config_spec` ([7aa9b7b](https://github.com/saltstack-formulas/rkhunter-formula/commit/7aa9b7b))
+* **osfamilymap:** remove quotes around paths for consistency ([d763120](https://github.com/saltstack-formulas/rkhunter-formula/commit/d763120))
+* **yaml:** move shared values to `defaults.yaml` ([034f5a0](https://github.com/saltstack-formulas/rkhunter-formula/commit/034f5a0))
+* **yaml:** sort `default` and `config` alphabetically ([140007d](https://github.com/saltstack-formulas/rkhunter-formula/commit/140007d))
+
 ## [0.1.2](https://github.com/saltstack-formulas/rkhunter-formula/compare/v0.1.1...v0.1.2) (2019-05-13)
 
 

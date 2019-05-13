@@ -4,9 +4,9 @@ This list is sorted by the number of commits per contributor in _descending_ ord
 
 Avatar|Contributor|Contributions
 :-:|---|:-:
-<img class='float-left rounded-1' src='https://avatars3.githubusercontent.com/u/3433835?v=4' width='36' height='36' alt='@n-rodriguez'>|[@n-rodriguez](https://github.com/n-rodriguez)|47
+<img class='float-left rounded-1' src='https://avatars3.githubusercontent.com/u/3433835?v=4' width='36' height='36' alt='@n-rodriguez'>|[@n-rodriguez](https://github.com/n-rodriguez)|48
+<img class='float-left rounded-1' src='https://avatars2.githubusercontent.com/u/10231489?v=4' width='36' height='36' alt='@myii'>|[@myii](https://github.com/myii)|7
 <img class='float-left rounded-1' src='https://avatars0.githubusercontent.com/u/8395913?v=4' width='36' height='36' alt='@aanriot'>|[@aanriot](https://github.com/aanriot)|3
-<img class='float-left rounded-1' src='https://avatars2.githubusercontent.com/u/10231489?v=4' width='36' height='36' alt='@myii'>|[@myii](https://github.com/myii)|3
 
 ---
 
