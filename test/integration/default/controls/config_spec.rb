@@ -10,7 +10,7 @@ control 'Rkhunter configuration' do
       its('content') { should include 'CRON_DB_UPDATE="true"' }
       its('content') { should include 'CRON_DAILY_RUN="true"' }
 
-      # Custom config from pillar
+      # Custom config from pillar (default: false)
       its('content') { should include 'RUN_CHECK_ON_BATTERY="true"' }
     end
 
@@ -32,7 +32,7 @@ control 'Rkhunter configuration' do
       its('content') { should include 'SCRIPTDIR=/usr/share/rkhunter/scripts' }
       its('content') { should include "DISABLE_TESTS='apps deleted_files hidden_procs packet_cap_apps suspscan'" }
 
-      # Custom config from pillar
+      # Custom config from pillar (default: without-password)
       its('content') { should include 'ALLOW_SSH_ROOT_USER=yes' }
     end
   end
@@ -40,8 +40,10 @@ control 'Rkhunter configuration' do
   def check_redhat
     describe file('/etc/sysconfig/rkhunter') do
       # Default config
-      its('content') { should include 'MAILTO=root@localhost' }
       its('content') { should include 'DIAG_SCAN=no' }
+
+      # Custom config from pillar (default: root@localhost)
+      its('content') { should include 'MAILTO=foo@localhost' }
     end
 
     describe file('/etc/rkhunter.conf') do
@@ -53,6 +55,9 @@ control 'Rkhunter configuration' do
       its('content') { should include 'TMPDIR=/var/lib/rkhunter' }
       its('content') { should include 'SCRIPTDIR=/usr/share/rkhunter/scripts' }
       its('content') { should include "DISABLE_TESTS='apps deleted_files hidden_procs ipc_shared_mem packet_cap_apps suspscan'" }
+
+      # Custom config from pillar (default: unset)
+      its('content') { should include 'ALLOW_SSH_ROOT_USER=yes' }
     end
   end
 
@@ -61,12 +66,14 @@ control 'Rkhunter configuration' do
       # Default config
       its('content') { should include "START_RKHUNTER=yes" }
       its('content') { should include "RUN_SUSECONFIG=yes" }
-      its('content') { should include "CRON_DB_UPDATE=no" }
       its('content') { should include "PRO_UPDATE=no" }
       its('content') { should include "NICE=0" }
       its('content') { should include "LOGFILE=/var/log/rkhunter.log" }
       its('content') { should include "REPORT_EMAIL=root" }
       its('content') { should include 'OPTIONS="--no-mail-on-warning --cronjob --report-warnings-only --append-log --pkgmgr RPM"' }
+
+      # Custom config from pillar (default: no)
+      its('content') { should include "CRON_DB_UPDATE=yes" }
     end
 
     describe file('/etc/rkhunter.conf') do
@@ -78,6 +85,9 @@ control 'Rkhunter configuration' do
       its('content') { should include 'TMPDIR=/var/lib/rkhunter' }
       its('content') { should include 'SCRIPTDIR=/usr/lib/rkhunter/scripts' }
       its('content') { should include "DISABLE_TESTS='apps deleted_files hidden_ports hidden_procs packet_cap_apps suspscan'" }
+
+      # Custom config from pillar (default: not set)
+      its('content') { should include 'ALLOW_SSH_ROOT_USER=yes' }
     end
   end
 
