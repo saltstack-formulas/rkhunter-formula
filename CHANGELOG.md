@@ -1,5 +1,22 @@
 # Changelog
 
+# [0.2.0](https://github.com/saltstack-formulas/rkhunter-formula/compare/v0.1.4...v0.2.0) (2019-05-16)
+
+
+### Bug Fixes
+
+* **formula:** fix list of compatible OS ([7a96f29](https://github.com/saltstack-formulas/rkhunter-formula/commit/7a96f29))
+
+
+### Continuous Integration
+
+* **kitchen+inspec:** provide platform specific pillars ([2f5c0a5](https://github.com/saltstack-formulas/rkhunter-formula/commit/2f5c0a5))
+
+
+### Features
+
+* **pillar:** use config.get instead of pillar.get ([b23b448](https://github.com/saltstack-formulas/rkhunter-formula/commit/b23b448))
+
 ## [0.1.4](https://github.com/saltstack-formulas/rkhunter-formula/compare/v0.1.3...v0.1.4) (2019-05-13)
 
 
