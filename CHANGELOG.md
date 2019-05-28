@@ -1,5 +1,22 @@
 # Changelog
 
+# [0.3.0](https://github.com/saltstack-formulas/rkhunter-formula/compare/v0.2.0...v0.3.0) (2019-05-28)
+
+
+### Continuous Integration
+
+* **cirrus:** use cirrus-ci alongisde travis-ci ([e3e75f5](https://github.com/saltstack-formulas/rkhunter-formula/commit/e3e75f5))
+
+
+### Documentation
+
+* **readme:** add testing requirements section ([20155bb](https://github.com/saltstack-formulas/rkhunter-formula/commit/20155bb))
+
+
+### Features
+
+* **kitchen:** add bin/kitchen binstub to ease calls to kitchen ([9da2a8c](https://github.com/saltstack-formulas/rkhunter-formula/commit/9da2a8c))
+
 # [0.2.0](https://github.com/saltstack-formulas/rkhunter-formula/compare/v0.1.4...v0.2.0) (2019-05-16)
 
 
