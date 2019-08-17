@@ -1,5 +1,18 @@
 # Changelog
 
+# [0.4.0](https://github.com/saltstack-formulas/rkhunter-formula/compare/v0.3.0...v0.4.0) (2019-08-17)
+
+
+### Continuous Integration
+
+* **cirrus:** reduce matrix down to 6 instances ([ad6d445](https://github.com/saltstack-formulas/rkhunter-formula/commit/ad6d445))
+* **kitchen+cirrus:** modify matrix to include `develop` platform ([ed9063b](https://github.com/saltstack-formulas/rkhunter-formula/commit/ed9063b))
+
+
+### Features
+
+* **yamllint:** include for this repo and apply rules throughout ([1e25f57](https://github.com/saltstack-formulas/rkhunter-formula/commit/1e25f57))
+
 # [0.3.0](https://github.com/saltstack-formulas/rkhunter-formula/compare/v0.2.0...v0.3.0) (2019-05-28)
 
 
