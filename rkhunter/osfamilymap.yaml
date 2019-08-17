@@ -132,7 +132,12 @@ Suse:
     cron_db_update: 'no'
     logfile: /var/log/rkhunter.log
     nice: 0
-    options: '"--no-mail-on-warning --cronjob --report-warnings-only --append-log --pkgmgr RPM"'
+    options: >-
+      "--no-mail-on-warning
+      --cronjob
+      --report-warnings-only
+      --append-log
+      --pkgmgr RPM"
     pro_update: 'no'
     report_email: root
     run_suseconfig: 'yes'
