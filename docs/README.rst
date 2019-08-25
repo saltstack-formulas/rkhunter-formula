@@ -69,34 +69,35 @@ Requirements
 * Docker
 
 .. code-block:: bash
+
    $ gem install bundler
    $ bundle install
    $ bin/kitchen test [platform]
+
 Where ``[platform]`` is the platform name defined in ``kitchen.yml``,
 e.g. ``debian-9-2019-2-py3``.
 
-
-``kitchen converge``
-^^^^^^^^^^^^^^^^^^^^
+``bin/kitchen converge``
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Creates the docker instance and runs the ``rkhunter`` main state, ready for testing.
 
-``kitchen verify``
-^^^^^^^^^^^^^^^^^^
+``bin/kitchen verify``
+^^^^^^^^^^^^^^^^^^^^^^
 
 Runs the ``inspec`` tests on the actual instance.
 
-``kitchen destroy``
-^^^^^^^^^^^^^^^^^^^
+``bin/kitchen destroy``
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Removes the docker instance.
 
-``kitchen test``
-^^^^^^^^^^^^^^^^
+``bin/kitchen test``
+^^^^^^^^^^^^^^^^^^^^
 
 Runs all of the stages above in one go: i.e. ``destroy`` + ``converge`` + ``verify`` + ``destroy``.
 
-``kitchen login``
-^^^^^^^^^^^^^^^^^
+``bin/kitchen login``
+^^^^^^^^^^^^^^^^^^^^^
 
 Gives you SSH access to the instance for manual testing.
