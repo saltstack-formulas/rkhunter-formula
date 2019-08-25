@@ -2,6 +2,15 @@
 Changelog
 =========
 
+`0.4.1 <https://github.com/saltstack-formulas/rkhunter-formula/compare/v0.4.0...v0.4.1>`_ (2019-08-25)
+----------------------------------------------------------------------------------------------------------
+
+Documentation
+^^^^^^^^^^^^^
+
+
+* **readme:** update testing section (\ `ef33193 <https://github.com/saltstack-formulas/rkhunter-formula/commit/ef33193>`_\ )
+
 `0.4.0 <https://github.com/saltstack-formulas/rkhunter-formula/compare/v0.3.0...v0.4.0>`_ (2019-08-17)
 ----------------------------------------------------------------------------------------------------------
 
