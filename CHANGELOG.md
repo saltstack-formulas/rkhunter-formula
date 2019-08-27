@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.2](https://github.com/saltstack-formulas/rkhunter-formula/compare/v0.4.1...v0.4.2) (2019-08-27)
+
+
+### Code Refactoring
+
+* **pillar:** sync map.jinja with template-formula ([0c51bce](https://github.com/saltstack-formulas/rkhunter-formula/commit/0c51bce))
+
 ## [0.4.1](https://github.com/saltstack-formulas/rkhunter-formula/compare/v0.4.0...v0.4.1) (2019-08-25)
 
 
