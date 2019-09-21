@@ -149,22 +149,6 @@ verifier:
     - cli
 
 suites:
-  - name: default
-    includes:
-      - NONE
-    provisioner:
-      state_top:
-        base:
-          '*':
-            - rkhunter
-      pillars:
-        top.sls:
-          base:
-            '*':
-              - rkhunter
-    verifier:
-      inspec_tests:
-        - path: test/integration/default
   - name: debian
     includes:
       - debian-10-develop-py3
