@@ -339,6 +339,7 @@ suites:
       state_top:
         base:
           '*':
+            - rkhunter._mapdata
             - rkhunter
       pillars:
         top.sls:
@@ -387,6 +388,7 @@ suites:
       state_top:
         base:
           '*':
+            - rkhunter._mapdata
             - rkhunter
       pillars:
         top.sls:
@@ -411,6 +413,7 @@ suites:
       state_top:
         base:
           '*':
+            - rkhunter._mapdata
             - rkhunter
       pillars:
         top.sls:
